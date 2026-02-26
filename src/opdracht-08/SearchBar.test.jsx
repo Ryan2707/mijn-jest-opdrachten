@@ -11,33 +11,33 @@ describe('SearchBar', () => {
   });
 
   test('update input bij typen', () => {
-    // TODO: Render SearchBar
-    // TODO: Vind de input (Hint: screen.getByPlaceholderText('Zoek...'))
-    // TODO: Type tekst in input (Hint: fireEvent.change(input, { target: { value: 'React' } }))
-    // TODO: Check of input.value 'React' is
-    expect(true).toBe(false); // Deze test faalt! Vervang met je eigen test
+     render(<SearchBar />);
+     const input = screen.getByPlaceholderText('Zoek...');
+     fireEvent.change(input, { target: { value: 'React' } });
+     expect(input.value).toBe('React');
   });
 
   test('toont zoekterm onder de input', () => {
-    // TODO: Render SearchBar
-    // TODO: Type 'Jest' in de input
-    // TODO: Check of "Zoeken naar: Jest" op het scherm staat
-    expect(true).toBe(false); // Deze test faalt! Vervang met je eigen test
+     render(<SearchBar />);
+     const input = screen.getByPlaceholderText('Zoek...');
+     fireEvent.change(input, { target: { value: 'Jest' } });
+     expect(screen.getByText('Zoeken naar: Jest')).toBeInTheDocument();
   });
 
   test('toont wissen button als er tekst is', () => {
-    // TODO: Render SearchBar
-    // TODO: Type tekst in input
-    // TODO: Check of button met tekst "Wissen" verschijnt
-    expect(true).toBe(false); // Deze test faalt! Vervang met je eigen test
+     render(<SearchBar />);
+     const input = screen.getByPlaceholderText('Zoek...');
+     fireEvent.change(input, { target: { value: 'iets' } });
+     expect(screen.getByText('Wissen')).toBeInTheDocument();
   });
 
   test('wissen button maakt input leeg', () => {
-    // TODO: Render SearchBar
-    // TODO: Type tekst in input
-    // TODO: Klik op "Wissen" button
-    // TODO: Check of input leeg is (value = '')
-    expect(true).toBe(false); // Deze test faalt! Vervang met je eigen test
+     render(<SearchBar />);
+     const input = screen.getByPlaceholderText('Zoek...');
+     fireEvent.change(input, { target: { value: 'test' } });
+     const button = screen.getByText('Wissen');
+     fireEvent.click(button);
+     expect(input.value).toBe('');
   });
 
 });
